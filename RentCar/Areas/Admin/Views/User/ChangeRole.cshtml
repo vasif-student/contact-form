@@ -1,0 +1,42 @@
+﻿@model UserViewModel
+
+@{
+    ViewData["Title"] = "ChangeRole";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>İstifadəçi adı</th>
+                                    <th>Email</th>
+                                    <th>Hazırki rol</th>
+                                    <th>Əməliyyatlar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@Model.UserName</td>
+                                    <td>@Model.Email</td>
+                                    <td>@Model.Role</td>
+                                    <td>
+                                        <a class="btn btn-primary" asp-controller="User" asp-action="AddRole" asp-route-id="@Model.Id">Admin</a>
+                                        <a class="btn btn-warning" asp-controller="User" asp-action="ChangePassword" asp-route-id="@Model.Id">User</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

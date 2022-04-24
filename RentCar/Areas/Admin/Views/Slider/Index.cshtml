@@ -1,0 +1,48 @@
+﻿@model List<Slider>
+@{
+    Layout = null;
+    int order = 0;
+
+}
+
+<h1 class="text-center">Sliderlər</h1>
+
+<form method="post" asp-area="Admin" asp-controller="Slider" asp-action="AddSliderPhotos" enctype="multipart/form-data">
+    <input accept="images/*" name="Files" class="form-control w-25 ml-4" type="file" id="formFileMultiple" multiple />
+    <button type="submit" class="btn btn-primary ml-4 mt-4">Şəkil əlavə et</button>
+</form>
+
+<div class="table-responsive mt-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Şəkil</th>
+                <th>Əməliyyatlar</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var sliderImage in Model)
+            {
+                order++;
+                <tr>
+                    <td>@order</td>
+                    <td><img src="~/image/carousel/@sliderImage.Image" style="width:400px; object-fit:cover;" /></td>
+                    <td>
+                        <a class="btn btn-danger" asp-area="Admin" asp-controller="Slider" asp-action="DeleteSliderPhoto" asp-route-id="@sliderImage.Id">Sil</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+
+

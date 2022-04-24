@@ -1,0 +1,44 @@
+﻿@model List<UserViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>İstifadəçi adı</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                    <th>Əməliyyatlar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.UserName</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Role</td>
+                                        <td>
+                                            <a class="btn btn-primary" asp-controller="User" asp-action="ChangeRole" asp-route-id="@item.Id">Rolunu dəyiş</a>
+                                            <a class="btn btn-warning" asp-controller="User" asp-action="ChangePassword" asp-route-id="@item.Id">Change Password</a>
+                                            <a class="btn btn-danger" asp-controller="User" asp-action="Block" asp-route-id="@item.Id">Bloklama</a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
